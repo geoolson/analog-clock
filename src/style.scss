@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background-color: darkgray;
+  background-color: black;
 
   .second-hand {
     position: absolute;
@@ -39,7 +39,7 @@
     animation: rotateMinutes 3600s infinite linear;
     width: 5px;
     height: 100px;
-    background-color: black;
+    background-color: white;
     z-index: 1;
   }
 
@@ -48,14 +48,14 @@
     animation: rotateHours 43200s infinite linear;
     width: 5px;
     height: 65px;
-    background-color: black;
+    background-color: white;
     z-index: 1;
   }
 
   .markers {
     div {
       position: absolute;
-      background-color: black;
+      background-color: white;
       @for $i from 0 through 59 {
         &:nth-child(#{$i + 1}) {
           transform: translate(-50%, -50%) rotate(calc($i * 6deg)) translate(95px);
