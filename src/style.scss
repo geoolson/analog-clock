@@ -1,0 +1,101 @@
+#app {
+  width: 220px;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: darkgray;
+
+  .second-hand {
+    position: absolute;
+    animation: rotateSeconds 60s infinite linear;
+    width: 2px;
+    height: 110px;
+    background-color: brown;
+    z-index: 2;
+  }
+
+  .second-hand-pivot {
+    position: absolute;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: brown;
+    z-index: 2;
+  }
+
+  .hand-axle {
+    position: absolute;
+    border-radius: 50%;
+    width: 3px;
+    height: 3px;
+    background-color: black;
+    z-index: 2;
+  }
+
+  .minute-hand {
+    position: absolute;
+    animation: rotateMinutes 3600s infinite linear;
+    width: 5px;
+    height: 100px;
+    background-color: black;
+    z-index: 1;
+  }
+
+  .hour-hand {
+    position: absolute;
+    animation: rotateHours 43200s infinite linear;
+    width: 5px;
+    height: 65px;
+    background-color: black;
+    z-index: 1;
+  }
+
+  .markers {
+    div {
+      position: absolute;
+      background-color: black;
+      @for $i from 0 through 59 {
+        &:nth-child(#{$i + 1}) {
+          transform: translate(-50%, -50%) rotate(calc($i * 6deg)) translate(95px);
+          @if $i % 5 == 0 {
+            border-radius: 50%;
+            width: 5px;
+            height: 5px;
+          } @else {
+            width: 7px;
+            height: 1px;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes rotateHours {
+    from {
+      transform: rotate(var(--hours)) translateY(-50%);
+    }
+    to {
+      transform: rotate(calc(var(--hours) + 360deg)) translateY(-50%);
+    }
+  }
+
+  @keyframes rotateMinutes {
+    from {
+      transform: rotate(var(--minutes)) translateY(-50%);
+    }
+    to {
+      transform: rotate(calc(var(--minutes) + 360deg)) translateY(-50%);
+    }
+  }
+
+  @keyframes rotateSeconds {
+    from {
+      transform: rotate(var(--seconds)) translateY(-40%);
+    }
+    to {
+      transform: rotate(calc(var(--seconds) + 360deg)) translateY(-40%);
+    }
+  }
+}
